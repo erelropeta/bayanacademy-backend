@@ -1,27 +1,31 @@
 # Artster
 
-A simple project that lets the user customize the font and text to be displayed in the terminal using figlet.
+A simple project that lets the user display the text in FIGfont in rainbow colors.
 
 ## Table of Contents
 
 - [Screenshot](#screenshot)
 - [Usage](#usage)
+- [Text and Font](#text-and-font)
   - [Use own text](#use-own-text)
   - [Choose font](#choose-font)
+- [Acknowledgements](#acknowledgements)
 
 ## Screenshot
+
+![](./images/screenshot-simple-usage.jpg)
 
 ## Usage
 
 Install dependecies.
 
-```posh
+```console
 npm i
 ```
 
 Simple usage:
 
-```posh
+```console
 node artster.js
 ```
 
@@ -36,11 +40,13 @@ Output:
                      |/
 ```
 
+## Text and Font
+
 ### Use own text
 
 Use own text:
 
-```posh
+```console
 node artster.js --text='Hello, sunshine!'
 ```
 
@@ -59,13 +65,13 @@ Output:
 
 Get the list of fonts:
 
-```posh
+```console
 node artster.js --fonts
 ```
 
 Set the font:
 
-```posh
+```console
 node artster.js --font='Dancing Font'
 ```
 
@@ -80,3 +86,9 @@ U|  _  |u | |___  \| |/__ \| |/__.-,_| |_| |      /\ \ /\ / /\.-,_| |_| |  |  _ 
  //   \\  <<   >>  //  \\  //  \\      \\ (")    .-,_\ /\ /_,-.     \\     //   \\_  //  \\  |||_   |||_
 (_") ("_)(__) (__)(_")("_)(_")("_)    (__) \|     \_)-'  '-(_/     (__)   (__)  (__)(_")("_)(__)_) (__)_)
 ```
+
+## Acknowledgements
+
+- [Yargs](https://github.com/yargs/yargs) - For the beautiful interactive command line
+- [Figlet](https://github.com/patorjk/figlet.js) - For the display of FIGfont spec
+- [Colors](https://github.com/Marak/colors.js) - For the rainbow colors implemented on the displayed text

@@ -1,5 +1,5 @@
-const math = require('./math');
+const { PI, add, square } = require('./math');
 
-console.log(math.PI);
-console.log(math.add(13, 11));
-console.log(math.square(6));
+console.log(PI);
+console.log(add(13, 11));
+console.log(square(6));

@@ -4,6 +4,10 @@ const add = (x, y) => x + y;
 
 const square = (x) => x * x;
 
-module.exports.PI = PI;
-module.exports.add = add;
-module.exports.square = square;
+const math = {
+  PI: PI,
+  add: add,
+  square: square,
+};
+
+module.exports = math;

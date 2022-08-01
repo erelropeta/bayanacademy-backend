@@ -28,6 +28,11 @@ app.get('/r/:subreddit', (req, res) => {
     res.render('subreddit', { subreddit });
 });
 
+app.get('/cats', (req, res) => {
+    const cats = ['Muning', 'Chi-chi', 'Garfield', 'Puti', 'Pampu'];
+    res.render('cats', { cats });
+});
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });

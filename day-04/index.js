@@ -23,6 +23,11 @@ app.get('/rand', (req, res) => {
     res.render('random', { randomNum });
 });
 
+app.get('/r/:subreddit', (req, res) => {
+    const { subreddit } = req.params;
+    res.render('subreddit', { subreddit });
+});
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });

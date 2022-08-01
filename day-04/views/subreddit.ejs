@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home Page</title>
+        <title>r/<%= name %></title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -23,25 +23,79 @@
                 color: #524f67;
             }
 
-            img {
-                width: 10rem;
-                height: 10rem;
-                object-fit: cover;
-                border-radius: 50%;
-            }
-
             p {
                 width: 80%;
                 max-width: 40rem;
+                margin-block: 0;
             }
 
             .fa-solid {
                 color: #403d52;
                 width: 1.5rem;
             }
+
+            .subreddit__title {
+                color: #c4a7e7;
+                font-weight: 600;
+                line-height: 1.3;
+            }
+
+            .subreddit__name {
+                color: #e0def4;
+            }
+
+            .subreddit__subscribers {
+                color: #6e6a86;
+                font-weight: 500;
+                margin-bottom: 2rem;
+            }
+
+            .subreddit__posts {
+                display: grid;
+                gap: 1rem;
+            }
+
+            .subreddit__post {
+                background-color: #26233a;
+                border: 1px solid #6e6a86;
+                border-radius: 0.25rem;
+                padding: 1.5rem;
+            }
+
+            .subreddit__post-author {
+                color: #908caa;
+                font-size: 0.85rem;
+            }
+
+            .subreddit__post-title {
+                color: #e0def4;
+                font-weight: 500;
+            }
+
+            .subreddit__post-img {
+                width: 100%;
+            }
         </style>
+        <link rel="stylesheet" href="/css/style.css" />
     </head>
     <body>
-        <h1>Browsing the <%= subreddit %> subreddit.</h1>
+        <h1 class="subreddit__title"><%= description %></h1>
+        <p class="subreddit__name">r/<%= name %></p>
+        <p class="subreddit__subscribers">
+            <%= subscribers %> total subscribers
+        </p>
+        <section class="subreddit__posts">
+            <% posts.forEach((post) => { %>
+            <article class="subreddit__post">
+                <p class="subreddit__post-author">
+                    Posted by u/<%= post.author %>
+                </p>
+                <h1 class="subreddit__post-title"><%= post.title %></h1>
+                <% if (post.img) { %>
+                <img class="subreddit__post-img" src="<%= post.img%>" alt="" />
+                <% } %>
+            </article>
+            <% }) %>
+        </section>
     </body>
 </html>

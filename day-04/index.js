@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const redditData = require('./data.json');
 const path = require('path');
 const port = 3000;
 
@@ -25,7 +26,9 @@ app.get('/rand', (req, res) => {
 
 app.get('/r/:subreddit', (req, res) => {
     const { subreddit } = req.params;
-    res.render('subreddit', { subreddit });
+    const data = redditData[subreddit];
+    console.log(redditData);
+    res.render('subreddit', { ...data });
 });
 
 app.get('/cats', (req, res) => {

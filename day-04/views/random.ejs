@@ -23,6 +23,8 @@
             h1 {
                 width: 80%;
                 color: #524f67;
+                text-align: center;
+                margin-inline: auto;
             }
 
             img {
@@ -54,5 +56,12 @@
             Your random number is:
             <span class="random-number"><%= randomNum %></span>
         </h1>
+
+        <h2>
+            <% if (randomNum % 2 == 0) { %> An even number <% } else { %> An odd
+            number <% } %>
+        </h2>
+
+        <!-- <h3><%= randomNum % 2 === 0 ? 'EVEN' : 'ODD' %></h3> -->
     </body>
 </html>

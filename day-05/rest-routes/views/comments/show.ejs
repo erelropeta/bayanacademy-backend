@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Comment Details</title>
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+    <body>
+        <main class="main">
+            <section class="comment-details">
+                <h1>Comment Details</h1>
+                <p>Comment ID: <%= comment.id %></p>
+                <p>Posted By: <%= comment.username %></p>
+                <p>Comment: <%= comment.comment %></p>
+                <a class="link-btn" href="/comments">View all comments</a>
+            </section>
+        </main>
+    </body>
+</html>

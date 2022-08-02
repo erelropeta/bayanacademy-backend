@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Egg Drop</title>
+        <style>
+            img {
+                width: 600px;
+                height: 250px;
+                object-fit: cover;
+                border-radius: 0.25rem;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="main">
+            <header>
+                <img
+                    src="https://images.summitmedia-digital.com/spotph/images/2021/09/03/momo-eggdrop-1630672590.jpeg"
+                    alt="Egg Drop"
+                />
+            </header>
+            <h1>Get Egg Drop</h1>
+            <form action="http://localhost:3000/order" method="GET">
+                <label>Type: <input type="text" name="type" /> </label>
+                <label>Qty: <input type="text" name="qty" /> </label>
+                <button type="submit">Submit</button>
+            </form>
+            <h1>Post Egg Drop</h1>
+            <form action="http://localhost:3000/order" method="POST">
+                <label>Type: <input type="text" name="type" /> </label>
+                <label>Qty: <input type="text" name="qty" /> </label>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+    </body>
+</html>

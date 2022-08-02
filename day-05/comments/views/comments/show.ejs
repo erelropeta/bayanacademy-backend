@@ -14,8 +14,22 @@
                 <p>Comment ID: <%= comment.id %></p>
                 <p>Posted By: <%= comment.username %></p>
                 <p>Comment: <%= comment.comment %></p>
-                <a class="link-btn" href="/comments">View all comments</a>
             </section>
+            <div class="action-btns">
+                <a class="link-btn" href="/comments/<%= comment.id %>/edit"
+                    >Edit Comment</a
+                >
+
+                <form
+                    action="/comments/<%= comment.id %>?_method=DELETE"
+                    method="post"
+                >
+                    <button class="submit-btn" type="submit">
+                        Delete Comment
+                    </button>
+                </form>
+            </div>
+            <a class="link-btn" href="/comments">View all comments</a>
         </main>
     </body>
 </html>

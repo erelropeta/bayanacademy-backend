@@ -4,12 +4,15 @@
         <%- include('head'); %>
     </head>
     <body>
-        <h1 class="page__title">All Cats</h1>
-        <ul>
-            <% for (let cat of cats) { %>
-            <li><%= cat %></li>
-            <% }%>
-        </ul>
+        <%- include('navbar') %>
+        <main class="main">
+            <h1 class="page__title">All Cats</h1>
+            <ul>
+                <% for (let cat of cats) { %>
+                <li><%= cat %></li>
+                <% }%>
+            </ul>
+        </main>
         <script src="/js/app.js"></script>
     </body>
 </html>

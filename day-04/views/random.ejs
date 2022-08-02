@@ -4,17 +4,20 @@
         <%- include('head'); %>
     </head>
     <body>
-        <h1 class="page__title">
-            Your random number is:
-            <span class="random-number"><%= randomNum %></span>
-        </h1>
+        <%- include('navbar') %>
+        <main class="main">
+            <h1 class="page__title">
+                Your random number is:
+                <span class="random-number"><%= randomNum %></span>
+            </h1>
 
-        <h2>
-            <% if (randomNum % 2 == 0) { %> An even number <% } else { %> An odd
-            number <% } %>
-        </h2>
+            <h2>
+                <% if (randomNum % 2 == 0) { %> An even number <% } else { %> An
+                odd number <% } %>
+            </h2>
 
-        <!-- <h3><%= randomNum % 2 === 0 ? 'EVEN' : 'ODD' %></h3> -->
+            <!-- <h3><%= randomNum % 2 === 0 ? 'EVEN' : 'ODD' %></h3> -->
+        </main>
         <script src="/js/app.js"></script>
     </body>
 </html>

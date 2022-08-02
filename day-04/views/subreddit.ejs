@@ -4,25 +4,32 @@
         <%- include('head'); %>
     </head>
     <body>
-        <h1 class="subreddit__title"><%= description %></h1>
-        <p class="subreddit__name">r/<%= name %></p>
-        <p class="subreddit__subscribers">
-            <%= subscribers %> total subscribers
-        </p>
-        <hr />
-        <section class="subreddit__posts">
-            <% posts.forEach((post) => { %>
-            <article class="subreddit__post">
-                <p class="subreddit__post-author">
-                    Posted by u/<%= post.author %>
-                </p>
-                <h1 class="subreddit__post-title"><%= post.title %></h1>
-                <% if (post.img) { %>
-                <img class="subreddit__post-img" src="<%= post.img%>" alt="" />
-                <% } %>
-            </article>
-            <% }) %>
-        </section>
+        <%- include('navbar') %>
+        <main class="main">
+            <h1 class="subreddit__title"><%= description %></h1>
+            <p class="subreddit__name">r/<%= name %></p>
+            <p class="subreddit__subscribers">
+                <%= subscribers %> total subscribers
+            </p>
+            <hr />
+            <section class="subreddit__posts">
+                <% posts.forEach((post) => { %>
+                <article class="subreddit__post">
+                    <p class="subreddit__post-author">
+                        Posted by u/<%= post.author %>
+                    </p>
+                    <h1 class="subreddit__post-title"><%= post.title %></h1>
+                    <% if (post.img) { %>
+                    <img
+                        class="subreddit__post-img"
+                        src="<%= post.img%>"
+                        alt=""
+                    />
+                    <% } %>
+                </article>
+                <% }) %>
+            </section>
+        </main>
         <script src="/js/app.js"></script>
     </body>
 </html>

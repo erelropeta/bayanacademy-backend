@@ -4,56 +4,56 @@
     <body>
         <%- include('nav.ejs') %>
         <main class="main">
-            <section class="s-sign-up">
-                <div class="c-sign-up">
-                    <h1 class="s-sign-up__title">Welcome to Airbnb</h1>
+            <section class="s-log-in">
+                <div class="c-log-in">
+                    <h1 class="s-log-in__title">Welcome back!</h1>
                     <% if (locals.errorMessage) { %>
                     <p class="error-message"><%= errorMessage %></p>
                     <% } %>
-                    <form class="sign-up-form" action="/sign-up" method="POST">
-                        <div class="sign-up-form__group">
+                    <form class="log-in-form" action="/log-in" method="POST">
+                        <div class="log-in-form__group">
                             <div
-                                class="c-sign-up-form__input c-sign-up-form__input--username"
+                                class="c-log-in-form__input log-in-form__label--username"
                             >
                                 <input
                                     type="text"
-                                    class="sign-up-form__input sign-up-form__input--username"
+                                    class="log-in-form__input log-in-form__input--username"
                                     name="username"
                                     id="username"
                                     placeholder=" "
                                 />
                                 <label
-                                    class="sign-up-form__label"
+                                    class="log-in-form__label"
                                     for="username"
                                 >
                                     Username
                                 </label>
                             </div>
-                            <div class="c-sign-up-form__input">
+                            <div class="c-log-in-form__input">
                                 <input
                                     type="password"
-                                    class="sign-up-form__input"
+                                    class="log-in-form__input"
                                     name="password"
                                     id="password"
                                     placeholder=" "
                                 />
                                 <label
-                                    class="sign-up-form__label"
+                                    class="log-in-form__label"
                                     for="password"
                                 >
                                     Password
                                 </label>
                             </div>
                         </div>
-                        <button class="sign-up-form__submit-btn" type="submit">
-                            Sign up
+                        <button class="log-in-form__submit-btn" type="submit">
+                            Log in
                         </button>
                     </form>
 
-                    <p class="s-sign-up__footer">
-                        Already have an account?
-                        <a class="s-sign-up__footer-link" href="/log-in"
-                            >Log in</a
+                    <p class="s-log-in__footer">
+                        Don't have an account yet?
+                        <a class="s-log-in__footer-link" href="/sign-up"
+                            >Sign up</a
                         >
                     </p>
                 </div>

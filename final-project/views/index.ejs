@@ -3,5 +3,35 @@
     <%- include('header.ejs') %>
     <body>
         <%- include('nav.ejs') %>
+        <main class="main">
+            <section class="s-listings">
+                <div class="c-listings">
+                    <% for (let listing of listings) { %>
+                    <a href="/listings/<%= listing.id %> ">
+                        <article class="listing">
+                            <img
+                                class="listing__img"
+                                src="<%= listing.image %>"
+                                alt=""
+                            />
+                            <p class="listing__address">
+                                <%= listing.address %>
+                            </p>
+                            <p class="listing__host">
+                                Hosted by <%= listing.host %>
+                            </p>
+                            <p class="c-listing__price">
+                                <span class="listing__price">
+                                    <%= formatCurrency.format(listing.price)%>
+                                </span>
+
+                                night
+                            </p>
+                        </article>
+                    </a>
+                    <% } %>
+                </div>
+            </section>
+        </main>
     </body>
 </html>

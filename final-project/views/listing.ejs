@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('header.ejs') %>
+    <body>
+        <%- include('nav.ejs') %>
+        <main class="main">
+            <section class="s-listing-page">
+                <div class="c-listing-page">
+                    <header class="listing-page__header">
+                        <h1 class="listing-page__name"><%= listing.name %></h1>
+                        <div class="listing__info">
+                            <a href="#reviews"
+                                ><%= listing['reviews'].length %> reviews</a
+                            >
+                            ·
+                            <a href="#map"><%= listing.address %> </a>
+                        </div>
+                    </header>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

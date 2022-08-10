@@ -1,8 +1,20 @@
 const port = 3000;
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+const Product = require('./models/listing');
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
+
+mongoose
+    .connect('mongodb://localhost:27017/airbnb')
+    .then(() => {
+        console.log('Connected!');
+    })
+    .catch((err) => {
+        console.log('Error :/');
+        console.log(err);
+    });
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
@@ -14,8 +26,22 @@ const users = [];
 
 let currentUser = [];
 
-app.get('/', (req, res) => {
-    res.render('index.ejs');
+let formatCurrency = new Intl.NumberFormat('ph-PH', {
+    style: 'currency',
+    currency: 'PHP',
+});
+
+app.get('/', async (req, res) => {
+    const listings = await Product.find();
+
+    res.render('index.ejs', { listings, formatCurrency });
+});
+
+app.get('/listings/:id', async (req, res) => {
+    const { id } = req.params;
+    const listing = await Product.findById(id);
+
+    res.render('listing', { id, listing });
 });
 
 app.get('/sign-up', (req, res) => {

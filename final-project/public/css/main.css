@@ -82,12 +82,25 @@ nav
     height: 2rem;
 }
 
-.navbar__link {
+.navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar__link,
+.navbar__btn {
     color: var(--clr-neutral-600);
     font-size: 0.9rem;
     border-radius: var(--border-radius-pill);
     border: 1px solid var(--clr-neutral-300);
     padding: 0.25rem 0.75rem;
+}
+
+.navbar__btn,
+.navbar__btn:hover {
+    background-color: transparent;
+    cursor: pointer;
 }
 
 /* =============

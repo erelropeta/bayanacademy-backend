@@ -31,9 +31,16 @@
                     </div>
                     <section class="reviews" id="reviews">
                         <% if (listing['reviews'].length > 0) { %>
-                        <h2 class="reviews__title">
-                            <%= listing['reviews'].length %> reviews
-                        </h2>
+                        <header class="reviews__header">
+                            <h2 class="reviews__title">
+                                <%= listing['reviews'].length %> reviews
+                            </h2>
+                            <% if (currentUser.length > 0) { %>
+                            <a class="reviews__write-link" href="#add-review"
+                                >Write a review</a
+                            >
+                            <% } %>
+                        </header>
                         <div class="c-reviews">
                             <% for (let review of listing.reviews) { %>
                             <article class="review">
@@ -50,6 +57,31 @@
                                     <%= review.review %>
                                 </p>
                             </article>
+                            <% } %> <% if (currentUser.length > 0) { %>
+                            <section class="add-review" id="add-review">
+                                <h3 class="add-review__title">
+                                    Write a review
+                                </h3>
+                                <form
+                                    class="add-review-form"
+                                    id="review-form"
+                                    action="/listings/<%= listing.id %>"
+                                    method="POST"
+                                >
+                                    <textarea
+                                        class="add-review-form__textarea"
+                                        name="review"
+                                        cols="30"
+                                        rows="10"
+                                    ></textarea>
+                                    <button
+                                        class="add-review-form__submit-btn"
+                                        type="submit"
+                                    >
+                                        Add review
+                                    </button>
+                                </form>
+                            </section>
                             <% } %>
                         </div>
                         <% } else { %>

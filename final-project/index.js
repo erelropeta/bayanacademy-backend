@@ -43,6 +43,24 @@ app.get('/listings/:id', async (req, res) => {
     res.render('listing', { currentUser, id, listing });
 });
 
+app.post('/listings/:id', async (req, res) => {
+    const currentUser = await CurrentUser.find({});
+    const { id } = req.params;
+    const { review } = req.body;
+    const listing = await Listing.findById(id);
+
+    listing.reviews.push({
+        username: currentUser[0].username,
+        review: review,
+    });
+
+    listing.save();
+
+    // console.log(listing.reviews);
+
+    res.redirect(req.get('referer'));
+});
+
 app.get('/sign-up', async (req, res) => {
     const currentUser = await CurrentUser.find({});
 
@@ -151,7 +169,7 @@ app.post('/log-in', async (req, res) => {
 app.get('/logout', async (req, res) => {
     await CurrentUser.deleteMany({});
 
-    res.redirect('/');
+    res.redirect(req.get('referer'));
 });
 
 app.listen(port, (req, res) => {

@@ -2,6 +2,8 @@ const port = 3000;
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const { Client } = require('@googlemaps/google-maps-services-js');
+const geocoder = require('geocoder');
 const Listing = require('./models/listing');
 const User = require('./models/user');
 const CurrentUser = require('./models/currentUser');
@@ -39,8 +41,24 @@ app.get('/listings/:id', async (req, res) => {
     const currentUser = await CurrentUser.find({});
     const { id } = req.params;
     const listing = await Listing.findById(id);
+    const client = new Client({});
 
-    res.render('listing', { currentUser, id, listing });
+    const location = await client
+        .geocode({
+            params: {
+                key: 'AIzaSyC3POnI-WthT6e1QlI7mU0LcMyeIzMYoxo',
+                address: listing.address,
+            },
+        })
+        .then((res) => {
+            const location = res.data.results[0].geometry.location;
+            return location;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
+    res.render('listing', { currentUser, id, listing, location });
 });
 
 app.post('/listings/:id', async (req, res) => {
@@ -55,8 +73,6 @@ app.post('/listings/:id', async (req, res) => {
     });
 
     listing.save();
-
-    // console.log(listing.reviews);
 
     res.redirect(req.get('referer'));
 });

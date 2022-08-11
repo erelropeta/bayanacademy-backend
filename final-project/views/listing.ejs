@@ -116,9 +116,20 @@
                     </section>
                     <section class="map">
                         <h2 class="map__title">Where you'll be</h2>
+                        <div
+                            class="c-map"
+                            id="map"
+                            data-lat="<%= location.lat %>"
+                            data-lng="<%= location.lng %>"
+                        ></div>
                     </section>
                 </div>
             </section>
         </main>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3POnI-WthT6e1QlI7mU0LcMyeIzMYoxo&callback=initMap&v=weekly"
+            defer
+        ></script>
+        <script src="/js/map.js"></script>
     </body>
 </html>

@@ -2,9 +2,15 @@ const port = 3000;
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const Product = require('./models/listing');
-const { v4: uuidv4 } = require('uuid');
+const Listing = require('./models/listing');
+const User = require('./models/user');
+const CurrentUser = require('./models/currentUser');
 const path = require('path');
+
+let formatCurrency = new Intl.NumberFormat('ph-PH', {
+    style: 'currency',
+    currency: 'PHP',
+});
 
 mongoose
     .connect('mongodb://localhost:27017/airbnb')
@@ -22,112 +28,128 @@ app.use(express.json());
 
 app.set('view engine', 'ejs');
 
-const users = [];
-
-let currentUser = [];
-
-let formatCurrency = new Intl.NumberFormat('ph-PH', {
-    style: 'currency',
-    currency: 'PHP',
-});
-
 app.get('/', async (req, res) => {
-    const listings = await Product.find();
+    const currentUser = await CurrentUser.find({});
+    const listings = await Listing.find();
 
-    res.render('index.ejs', { listings, formatCurrency });
+    res.render('index.ejs', { currentUser, listings, formatCurrency });
 });
 
 app.get('/listings/:id', async (req, res) => {
+    const currentUser = await CurrentUser.find({});
     const { id } = req.params;
-    const listing = await Product.findById(id);
+    const listing = await Listing.findById(id);
 
-    res.render('listing', { id, listing });
+    res.render('listing', { currentUser, id, listing });
 });
 
-app.get('/sign-up', (req, res) => {
-    res.render('sign-up.ejs');
+app.get('/sign-up', async (req, res) => {
+    const currentUser = await CurrentUser.find({});
+
+    if (currentUser.length > 0) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('sign-up.ejs', { currentUser });
 });
 
-app.post('/sign-up', (req, res) => {
+app.post('/sign-up', async (req, res) => {
+    const currentUser = await CurrentUser.find({});
     const { username, password } = req.body;
     let errorMessage = '';
 
-    const userExist = users.find((user) => user.username === username);
+    const userExist = await User.find({ username: username });
 
-    if (currentUser.length != 0) {
+    if (currentUser.length > 0) {
         res.redirect('/');
         return;
     }
 
     if (username == '') {
         errorMessage = 'Please enter a username.';
-        res.render('sign-up', { errorMessage });
+        res.render('sign-up', { currentUser, errorMessage });
         return;
     }
 
-    if (userExist) {
+    if (userExist.length > 0) {
         errorMessage = 'Username already exist.';
-        res.render('sign-up', { errorMessage });
+        res.render('sign-up', { currentUser, errorMessage });
         return;
     }
 
-    if (!userExist && password === '') {
+    if (userExist.length == 0 && password === '') {
         errorMessage = 'Please enter a password.';
-        res.render('sign-up', { errorMessage });
+        res.render('sign-up', { currentUser, errorMessage });
         return;
     }
 
-    users.push({ id: uuidv4(), username, password });
+    const newUser = new User({
+        username: username,
+        password: password,
+        img: 'https://secure.gravatar.com/avatar/c6a86ca58399fc225413e4bb69c7d96b.jpg?d=mp&s=1200',
+    });
 
-    console.log(users);
+    await newUser.save();
 
     res.redirect('/log-in');
 });
 
-app.get('/log-in', (req, res) => {
-    const { username, password } = req.body;
+app.get('/log-in', async (req, res) => {
+    const currentUser = await CurrentUser.find({});
 
-    const userExist = res.render('log-in.ejs');
+    res.render('log-in', { currentUser });
 });
 
-app.post('/log-in', (req, res) => {
+app.post('/log-in', async (req, res) => {
+    const currentUser = await CurrentUser.find({});
     const { username, password } = req.body;
+    const userExist = await User.find({ username: username });
+
     let errorMessage = '';
 
-    const userExist = users.find((user) => user.username === username);
-
-    if (currentUser.length != 0) {
+    if (currentUser.length > 0) {
         res.redirect('/');
         return;
     }
 
     if (username == '') {
         errorMessage = 'Please enter a username.';
-        res.render('log-in', { errorMessage });
+        res.render('log-in', { currentUser, errorMessage });
         return;
     }
 
-    if (!userExist) {
+    if (userExist.length == 0) {
         errorMessage = 'User does not exist.';
-        res.render('log-in', { errorMessage });
+        res.render('log-in', { currentUser, errorMessage });
         return;
     }
 
-    if (userExist && userExist.password !== password) {
-        errorMessage = 'Username and password do not match.';
-        res.render('log-in', { errorMessage });
-        return;
-    }
-
-    if (!userExist && password === '') {
+    if (userExist.length > 0 && password === '') {
         errorMessage = 'Please enter a password.';
-        res.render('log-in', { errorMessage });
+        res.render('log-in', { currentUser, errorMessage });
         return;
     }
 
-    currentUser.push({ userExist });
+    if (userExist.length > 0 && userExist[0].password !== password) {
+        errorMessage = 'Username and password do not match.';
+        res.render('log-in', { currentUser, errorMessage });
+        return;
+    }
 
-    console.log(currentUser);
+    const newCurrentUser = new CurrentUser({
+        id: userExist[0].id,
+        username: userExist[0].username,
+        img: userExist[0].img,
+    });
+
+    await newCurrentUser.save();
+
+    res.redirect('/');
+});
+
+app.get('/logout', async (req, res) => {
+    await CurrentUser.deleteMany({});
 
     res.redirect('/');
 });

@@ -44,8 +44,15 @@
             </svg>
         </a>
         <div class="navbar__links">
-            <a class="navbar__link" href="/sign-up">Sign Up</a>
-            <a class="navbar__link" href="/log-in">Log In</a>
+            <% if (currentUser.length == 0) { %>
+                <a class="navbar__link" href="/sign-up">Sign Up</a>
+                <a class="navbar__link" href="/log-in">Log In</a>
+            <% } else { %>
+                Hello, <%= currentUser[0].username %>!
+                <form action="/logout">
+                    <button class="navbar__btn">Log Out</a>
+                </form>
+            <% } %>   
         </div>
         </button>
     </div>

@@ -42,7 +42,8 @@ a {
 }
 
 button,
-input {
+input,
+textarea {
     font-family: inherit;
 }
 
@@ -211,9 +212,28 @@ listing page
     margin-bottom: 3rem;
 }
 
+.reviews__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
 .reviews__title {
     font-weight: 600;
-    margin-bottom: 2rem;
+}
+
+.reviews__write-link {
+    color: var(--clr-neutral-100);
+    font-size: 1rem;
+    font-weight: 600;
+    background-image: linear-gradient(
+        to right,
+        var(--clr-red-600),
+        var(--clr-pink-500)
+    );
+    border-color: transparent;
+    border-radius: 0.25rem;
+    padding: 0.5rem 2rem;
 }
 
 .c-reviews {
@@ -271,6 +291,47 @@ listing page
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
+}
+
+.add-review {
+    grid-column: 1 / -1;
+}
+
+.add-review__title {
+    font-weight: 600;
+    background-color: var(--clr-neutral-200);
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.add-review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.add-review-form__textarea {
+    font-size: 1rem;
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 0.15rem;
+    padding: 1rem;
+}
+
+.add-review-form__submit-btn {
+    align-self: flex-end;
+    color: var(--clr-neutral-100);
+    font-size: 1rem;
+    font-weight: 600;
+    background-image: linear-gradient(
+        to right,
+        var(--clr-red-600),
+        var(--clr-pink-500)
+    );
+    border-color: transparent;
+    border-radius: 0.25rem;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
 }
 
 .map {

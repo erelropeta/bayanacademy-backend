@@ -248,6 +248,11 @@ listing page
     padding: 1rem;
 }
 
+.c-map {
+    width: 100%;
+    height: 30rem;
+}
+
 @media screen and (min-width: 46.5rem) {
     .listing-page__header {
         border-bottom: none;

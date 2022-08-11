@@ -133,12 +133,21 @@ listing page
 ============= */
 
 .c-listing-page {
+    display: grid;
+    grid-template-columns: 1fr;
     width: var(--c-width);
     max-width: var(--c-max-width-m);
     margin-inline: auto;
 }
 
+.listing-page__header {
+    border-bottom: 1px solid var(--clr-neutral-300);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .listing-page__name {
+    font-size: 1.65rem;
     font-weight: 600;
 }
 
@@ -151,6 +160,113 @@ listing page
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: underline;
+}
+
+.listing-page__imgs {
+    grid-row: 1 / 2;
+    display: grid;
+    /* height: 15rem; */
+    aspect-ratio: 1.5 / 1;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.listing-page__imgs img {
+    width: 100%;
+    height: 100%;
+}
+
+.listing-page__host {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    border-bottom: 1px solid var(--clr-neutral-300);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.listing-page__description {
+    border-bottom: 1px solid var(--clr-neutral-300);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.reviews {
+    border-bottom: 1px solid var(--clr-neutral-300);
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+}
+
+.reviews__title {
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.c-reviews {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.review {
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+@media screen and (min-width: 46.5rem) {
+    .listing-page__header {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .listing-page__imgs {
+        grid-row: 2 / 3;
+        aspect-ratio: 2 / 1;
+    }
+
+    .review {
+        border: transparent;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 70.5rem) {
+    .listing-page__imgs {
+        aspect-ratio: 2.75 / 1;
+    }
+
+    .c-reviews {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 7rem;
+    }
+}
+
+.review__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.review__user {
+    font-weight: 600;
+}
+
+.review__user-img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+
+.map {
+    margin-bottom: 3rem;
+}
+
+.map__title {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
 }
 
 /* =============

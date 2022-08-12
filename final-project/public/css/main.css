@@ -265,6 +265,11 @@ listing page
     gap: 1.5rem;
 }
 
+.reviews__notice {
+    display: flex;
+    gap: 1rem;
+}
+
 .review {
     border: 1px solid var(--clr-neutral-300);
     border-radius: 0.75rem;
@@ -360,10 +365,6 @@ listing page
     border-radius: 0.25rem;
     padding: 0.5rem 2rem;
     cursor: pointer;
-}
-
-.map {
-    margin-bottom: 3rem;
 }
 
 .map__title {

@@ -73,7 +73,7 @@ app.post('/listings/:id', async (req, res) => {
 
     listing.save();
 
-    res.redirect(req.get('referer'));
+    res.redirect(req.get('referer') + '#reviews');
 });
 
 app.get('/sign-up', async (req, res) => {
@@ -93,11 +93,6 @@ app.post('/sign-up', async (req, res) => {
     let errorMessage = '';
 
     const userExist = await User.find({ username: username });
-
-    if (currentUser.length > 0) {
-        res.redirect('/');
-        return;
-    }
 
     if (username == '') {
         errorMessage = 'Please enter a username.';
@@ -130,13 +125,20 @@ app.post('/sign-up', async (req, res) => {
 
 app.get('/log-in', async (req, res) => {
     const currentUser = await CurrentUser.find({});
+    const referrer = req.get('referrer');
 
-    res.render('log-in', { currentUser });
+    if (currentUser.length > 0) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('log-in', { currentUser, referrer });
 });
 
 app.post('/log-in', async (req, res) => {
     const currentUser = await CurrentUser.find({});
     const { username, password } = req.body;
+    const { referrer } = req.query;
     const userExist = await User.find({ username: username });
 
     let errorMessage = '';
@@ -178,7 +180,7 @@ app.post('/log-in', async (req, res) => {
 
     await newCurrentUser.save();
 
-    res.redirect('/');
+    res.redirect(referrer);
 });
 
 app.get('/logout', async (req, res) => {

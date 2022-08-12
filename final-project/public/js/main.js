@@ -1,5 +1,7 @@
 const footerDateYearContainer = document.querySelector('.footer__date-year');
 
+footerDateYearContainer.textContent = new Date().getFullYear();
+
 window.initMap = initMap;
 
 function initMap() {

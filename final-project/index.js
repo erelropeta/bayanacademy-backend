@@ -73,7 +73,7 @@ app.post('/listings/:id', async (req, res) => {
 
     listing.save();
 
-    res.redirect(req.get('referer'));
+    res.redirect(req.get('referer') + '#reviews');
 });
 
 app.get('/sign-up', async (req, res) => {

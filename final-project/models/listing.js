@@ -4,6 +4,9 @@ const reviewSchema = new mongoose.Schema({
     username: {
         type: String,
     },
+    image: {
+        type: String,
+    },
     review: {
         type: String,
     },
@@ -20,7 +23,7 @@ const listingSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enu: ['island', 'omg', 'beach', 'tiny homes', 'bed & breakfast'],
+        enu: ['island', 'omg', 'beach', 'tiny home', 'bed & breakfast'],
         required: true,
     },
     host: {

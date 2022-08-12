@@ -180,7 +180,16 @@ app.post('/log-in', async (req, res) => {
 
     await newCurrentUser.save();
 
+<<<<<<< HEAD
     res.redirect(referrer);
+=======
+    if (referrer) {
+        res.redirect(referrer);
+        return;
+    }
+
+    res.redirect('/');
+>>>>>>> c45e3db1ed5df095f319c89ced1d9b8fa02ea050
 });
 
 app.get('/logout', async (req, res) => {

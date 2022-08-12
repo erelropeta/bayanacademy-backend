@@ -65,31 +65,6 @@
                                     <%= review.review %>
                                 </p>
                             </article>
-                            <% } %> <% if (userLoggedIn) { %>
-                            <section class="add-review" id="add-review">
-                                <h3 class="add-review__title">
-                                    Write a review
-                                </h3>
-                                <form
-                                    class="add-review-form"
-                                    id="review-form"
-                                    action="/listings/<%= listing.id %>"
-                                    method="POST"
-                                >
-                                    <textarea
-                                        class="add-review-form__textarea"
-                                        name="review"
-                                        cols="30"
-                                        rows="10"
-                                    ></textarea>
-                                    <button
-                                        class="add-review-form__submit-btn"
-                                        type="submit"
-                                    >
-                                        Add review
-                                    </button>
-                                </form>
-                            </section>
                             <% } %> <% } else { %>
                             <div class="reviews__notice">
                                 <div class="reviews__notice-icon">
@@ -117,6 +92,31 @@
                                     Guest Refund Policy.
                                 </p>
                             </div>
+                            <% } %> <% if (userLoggedIn) { %>
+                            <section class="add-review" id="add-review">
+                                <h3 class="add-review__title">
+                                    Write a review
+                                </h3>
+                                <form
+                                    class="add-review-form"
+                                    id="review-form"
+                                    action="/listings/<%= listing.id %>"
+                                    method="POST"
+                                >
+                                    <textarea
+                                        class="add-review-form__textarea"
+                                        name="review"
+                                        cols="30"
+                                        rows="10"
+                                    ></textarea>
+                                    <button
+                                        class="add-review-form__submit-btn"
+                                        type="submit"
+                                    >
+                                        Add review
+                                    </button>
+                                </form>
+                            </section>
                             <% } %>
                         </div>
                     </section>

@@ -130,18 +130,20 @@ app.post('/sign-up', async (req, res) => {
 
 app.get('/log-in', async (req, res) => {
     const currentUser = await CurrentUser.find({});
+    const referrer = req.get('referrer');
 
     if (currentUser.length > 0) {
         res.redirect('/');
         return;
     }
 
-    res.render('log-in', { currentUser });
+    res.render('log-in', { currentUser, referrer });
 });
 
 app.post('/log-in', async (req, res) => {
     const currentUser = await CurrentUser.find({});
     const { username, password } = req.body;
+    const { referrer } = req.query;
     const userExist = await User.find({ username: username });
 
     let errorMessage = '';
@@ -182,6 +184,11 @@ app.post('/log-in', async (req, res) => {
     });
 
     await newCurrentUser.save();
+
+    if (referrer) {
+        res.redirect(referrer);
+        return;
+    }
 
     res.redirect('/');
 });

@@ -10,7 +10,11 @@
                     <% if (locals.errorMessage) { %>
                     <p class="error-message"><%= errorMessage %></p>
                     <% } %>
-                    <form class="log-in-form" action="/log-in" method="POST">
+                    <form
+                        class="log-in-form"
+                        action="/log-in?referrer=<%= referrer %>"
+                        method="POST"
+                    >
                         <div class="log-in-form__group">
                             <div
                                 class="c-log-in-form__input log-in-form__label--username"

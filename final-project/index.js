@@ -131,6 +131,11 @@ app.post('/sign-up', async (req, res) => {
 app.get('/log-in', async (req, res) => {
     const currentUser = await CurrentUser.find({});
 
+    if (currentUser.length > 0) {
+        res.redirect('/');
+        return;
+    }
+
     res.render('log-in', { currentUser });
 });
 

@@ -12,7 +12,7 @@
                     <% } %>
                     <form
                         class="log-in-form"
-                        action="/log-in?referrer=<%= referrer %>"
+                        action="/log-in<%= locals.referrer ? `?referrer=${referrer}` : ''%>"
                         method="POST"
                     >
                         <div class="log-in-form__group">

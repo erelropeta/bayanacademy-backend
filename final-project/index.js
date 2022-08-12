@@ -46,7 +46,7 @@ app.get('/listings/:id', async (req, res) => {
         .geocode({
             params: {
                 key: 'AIzaSyC3POnI-WthT6e1QlI7mU0LcMyeIzMYoxo',
-                address: listing.address,
+                address: listing.name,
             },
         })
         .then((res) => {

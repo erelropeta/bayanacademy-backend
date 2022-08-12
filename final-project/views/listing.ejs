@@ -54,8 +54,9 @@
                                 <header class="review__header">
                                     <img
                                         class="review__user-img"
-                                        src="https://a0.muscache.com/im/pictures/user/17557aa1-3e45-4e99-a275-bb69ab79fa43.jpg?im_w=240"
+                                        src="<%= review.image ? review.image : `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFKr2wkus_oTxAKtF3bDm-KizoDWW4biFbmsCxK_BffcwVQzIJA6g51ZaCMr5khhaTLxc&usqp=CAU` %>"
                                     />
+
                                     <p class="review__user">
                                         <%= review.username %>
                                     </p>

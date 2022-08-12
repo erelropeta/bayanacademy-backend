@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const { Client } = require('@googlemaps/google-maps-services-js');
-const geocoder = require('geocoder');
 const Listing = require('./models/listing');
 const User = require('./models/user');
 const CurrentUser = require('./models/currentUser');

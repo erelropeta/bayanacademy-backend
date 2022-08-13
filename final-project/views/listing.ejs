@@ -65,7 +65,8 @@
                                     </p>
                                 </header>
                                 <p class="review__review">
-                                    <%= review.review %>
+                                    <%= review.review.slice(0, 200) %> <%=
+                                    review.review[201] ? '...' : '' %>
                                 </p>
                             </article>
                             <% } %> <% } else { %>

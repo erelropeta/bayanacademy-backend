@@ -39,11 +39,15 @@ const listingSchema = new mongoose.Schema({
         required: true,
         min: 0,
     },
-    description: {
+    address: {
         type: String,
         required: true,
     },
-    address: {
+    datePosted: {
+        type: String,
+        required: true,
+    },
+    description: {
         type: String,
         required: true,
     },

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const port = 3000;
 const express = require('express');
 const app = express();
@@ -57,7 +58,13 @@ app.get('/listings/:id', async (req, res) => {
             console.log(err);
         });
 
-    res.render('listing', { currentUser, id, listing, location });
+    res.render('listing', {
+        currentUser,
+        id,
+        listing,
+        location,
+        apikey: process.env.API_KEY,
+    });
 });
 
 app.post('/listings/:id', async (req, res) => {

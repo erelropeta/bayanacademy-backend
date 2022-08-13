@@ -52,8 +52,10 @@
         </ul>
     </div>
 </footer>
+<% if (locals.apikey) { %>
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3POnI-WthT6e1QlI7mU0LcMyeIzMYoxo&callback=initMap&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=<%= apikey %>&callback=initMap&v=weekly"
     defer
 ></script>
+<% } %>
 <script src="/js/main.js"></script>

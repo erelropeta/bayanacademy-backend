@@ -235,10 +235,17 @@ listing page
     height: 100%;
 }
 
-.listing-page__host {
+.listing-page__host,
+.listing-page__date-posted {
     font-size: 1.5rem;
     font-weight: 600;
     text-transform: capitalize;
+}
+
+.listing-page__date-posted {
+    color: var(--clr-neutral-600);
+    font-weight: 500;
+    font-size: 1rem;
     border-bottom: 1px solid var(--clr-neutral-300);
     padding-bottom: 1.5rem;
     margin-bottom: 1.5rem;

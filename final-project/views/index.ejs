@@ -14,11 +14,18 @@
                                 src="<%= listing.image %>"
                                 alt=""
                             />
+                            <h2 class="listing__title">
+                                <%= listing.title.slice(0, 30) %> <%=
+                                listing.title[31] ? '...' : '' %>
+                            </h2>
                             <p class="listing__address">
                                 <%= listing.address %>
                             </p>
                             <p class="listing__host">
                                 Hosted by <%= listing.host %>
+                            </p>
+                            <p class="listing__description">
+                                <%= listing.description.slice(0, 150) %>...
                             </p>
                             <p class="c-listing__price">
                                 <span class="listing__price">

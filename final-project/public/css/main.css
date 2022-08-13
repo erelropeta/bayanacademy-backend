@@ -142,9 +142,24 @@ home
     margin-inline: auto;
 }
 
+.listing {
+    height: 100%;
+    display: grid;
+    justify-content: start;
+    font-size: 0.875rem;
+}
+
 .listing__img {
     aspect-ratio: 1 / 1;
     border-radius: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.listing__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--clr-neutral-900);
+    padding-bottom: 0.25rem;
 }
 
 .listing__address {
@@ -154,7 +169,13 @@ home
 
 .listing__host {
     color: var(--clr-neutral-600);
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.listing__description {
+    color: var(--clr-neutral-900);
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
 }
 
 .c-listing__price {
